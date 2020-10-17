@@ -15,7 +15,7 @@
                 <v-card-text>
                   <v-row>
                     <v-col sm="12" md="12" lg="6">
-                      <v-text-field v-model="dataList.id" label="ID" required disabled filled></v-text-field>
+                      <v-text-field v-model="dataList.username" label="Username" required disabled filled></v-text-field>
                     </v-col>
                     <v-col sm="12" md="12" lg="6">
                       <v-text-field
@@ -27,13 +27,13 @@
                       ></v-text-field>
                     </v-col>
                     <v-col sm="12" md="12" lg="6">
-                      <v-text-field v-model="dataList.name" label="Name" required filled></v-text-field>
+                      <v-text-field v-model="dataList.first_name" label="Name" required filled></v-text-field>
                     </v-col>
                     <v-col sm="12" md="12" lg="6">
-                      <v-text-field v-model="dataList.contact" label="Contact" required filled></v-text-field>
+                      <v-text-field v-model="dataList.last_name" label="Name" required filled></v-text-field>
                     </v-col>
                     <v-col sm="12" md="12" lg="6">
-                      <v-text-field v-model="dataList.address" label="Address" required filled></v-text-field>
+                      <v-text-field v-model="dataList.phone" label="Contact" required filled></v-text-field>
                     </v-col>
                     <v-col sm="12" md="12" lg="6">
                       <v-text-field
@@ -56,7 +56,7 @@
           </v-row>
         </v-col>
 
-        <v-col sm="12" md="4" lg="4">
+        <!-- <v-col sm="12" md="4" lg="4">
           <v-card max-width="344" class="mx-auto">
             <v-img
               :src="dataList.image"
@@ -81,7 +81,7 @@
                   />
             </v-card-actions>
           </v-card>
-        </v-col>
+        </v-col> -->
       </v-row>
 
       <v-dialog v-model="dialog" persistent max-width="600px">

@@ -23,6 +23,12 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+                                <!-- @isset($message)
+                                
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>Error: {{ $message ?? '' }}</strong>
+                                </span>
+                                @endisset -->
                             </div>
                         </div>
 

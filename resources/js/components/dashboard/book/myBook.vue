@@ -46,9 +46,6 @@
 					</v-data-table>
 				</v-col>
 			</v-row>
-			<v-btn bottom color="accent" dark fab fixed right @click="dialog = !dialog">
-				<v-icon>mdi-plus</v-icon>
-			</v-btn>
 		</v-container>
 		<v-snackbar
 			v-model="snackbar"

@@ -202,7 +202,7 @@ export default {
 			{ text: "Reader", value:3 }
 		],
 		headers: [
-			{ text: "ID", align: "left", value: "id" },
+			{ text: "Username", align: "left", value: "username" },
 			{ text: "Name", value: "name" },
 			{ text: "Email", value: "email" },
 			{ text: "Type", value: "type" },

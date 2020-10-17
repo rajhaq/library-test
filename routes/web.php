@@ -21,26 +21,12 @@ Route::get('/logoutuser', 'dashboard\UserController@logout');
 Route::prefix('/app')->group(function () {
     Route::resource('/dashboard', 'dashboard\DashboardController');
     Route::resource('/user', 'dashboard\UserController');
-    Route::resource('/category', 'dashboard\CategoryController');
-    Route::resource('/topping', 'dashboard\ToppingController');
-    Route::resource('/pizza', 'dashboard\PizzaController');
-    Route::resource('/folder', 'dashboard\ImageFolderController');
-    Route::resource('/image', 'dashboard\ImageController');
-    Route::resource('/order', 'dashboard\OrderController');
     Route::resource('/book', 'dashboard\BookController');
     Route::resource('/assign', 'dashboard\AssignController');
 
      
 });
-Route::prefix('/web')->group(function () {
-    Route::resource('/category', 'api\CategoryController');
-    Route::resource('/pizza', 'api\PizzaController');
-    Route::resource('/cart', 'api\CartController');
-    Route::resource('/order', 'api\OrderController');
-    Route::resource('/topping', 'api\ToppingController');
 
-     
-});
 Route::post('/app/changepassword', 'dashboard\UserController@changePass');
 Route::post('/app/avatar','dashboard\UserController@avatar');
 Route::get('/app/profile', 'dashboard\UserController@profile');
@@ -48,5 +34,6 @@ Route::get('/app/profile', 'dashboard\UserController@profile');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home/list', 'HomeController@index')->name('list');
 Route::get('/{slug}', 'HomeController@index');
 Route::get('/{slug}/{child}', 'HomeController@index');

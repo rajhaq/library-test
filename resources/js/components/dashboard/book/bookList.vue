@@ -43,7 +43,7 @@
 					</div>
 				</v-col>
 			</v-row>
-			<v-btn bottom color="accent" dark fab fixed right @click="dialog = !dialog">
+			<v-btn bottom color="accent" dark fab fixed right @click="dialog = !dialog" v-show="$store.state.authUser.type==1 || $store.state.authUser.type==2" >
 				<v-icon>mdi-plus</v-icon>
 			</v-btn>
 		</v-container>
@@ -188,7 +188,7 @@
         :items="dataCustomer"
         :loading="loading"
         :search-input.sync="searchCustomer"
-        item-text="id"
+        item-text="username"
         item-value="id"
         label="Customer ID"
         return-object
@@ -198,13 +198,13 @@
           color="blue-grey"
           class="white--text"
         >
-          <span>{{item.first_name}}-{{item.id}}</span>
+          <span>{{item.first_name}}-{{item.username}}</span>
         </v-chip>
       </template>
 	  <template v-slot:item="{ item }">
         <v-list-item-content>
-          <v-list-item-title >{{item.first_name}}-{{item.id}}</v-list-item-title>
-          <v-list-item-subtitle v-text="item.phone"></v-list-item-subtitle>
+          <v-list-item-title >{{item.username}}</v-list-item-title>
+          <v-list-item-subtitle v-text="item.first_name"></v-list-item-subtitle>
         </v-list-item-content>
       </template>
 	  </v-autocomplete>
@@ -283,7 +283,7 @@ export default {
 
         },
 		headers: [
-			{ text: "ID", value: "id" },
+			{ text: "ID", value: "book_id" },
 			{ text: "Name", value: "name" },
 			{ text: "Category", value: "category" },
 			{ text: "Author", value: "author" },

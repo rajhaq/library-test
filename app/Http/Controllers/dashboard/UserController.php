@@ -26,10 +26,7 @@ class UserController extends Controller
         {
             $search='%'.$request->search.'%';
 
-            $data=$data->where('id','like',$search)
-            ->orWhere('phone',  'like', $search)
-            ->orWhere('first_name',  'like', $search)
-            ->orWhere('last_name',  'like', $search);
+            $data=$data->where('username','like',$search);
     
         }
         $data= $data->get();
@@ -83,9 +80,9 @@ class UserController extends Controller
     {        
              $update=User::where('id',$id)->update(
                  [
-                     'name' => $request->name,
-                     'address' => $request->address,
-                     'mobile' => $request->mobile,
+                     'first_name' => $request->first_name,
+                     'last_name' => $request->last_name,
+                     'phone' => $request->phone,
                      'type' => $request->type,
                      'status' => $request->status
  

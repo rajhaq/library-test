@@ -18,7 +18,7 @@ class CreateBooksTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('name');
             $table->string('category');
-            $table->string('author')->unique();
+            $table->string('author');
             $table->string('publish_date')->nullable();
             $table->integer('stock')->default(1);
             $table->tinyInteger('status')->default(1);

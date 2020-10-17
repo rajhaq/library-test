@@ -3194,9 +3194,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
 
 
 
@@ -3829,7 +3826,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       },
       headers: [{
         text: "ID",
-        value: "id"
+        value: "book_id"
       }, {
         text: "Name",
         value: "name"
@@ -4301,9 +4298,6 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-//
-//
-//
 //
 //
 //
@@ -5387,9 +5381,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         value: 3
       }],
       headers: [{
-        text: "ID",
+        text: "Username",
         align: "left",
-        value: "id"
+        value: "username"
       }, {
         text: "Name",
         value: "name"
@@ -10202,7 +10196,7 @@ var render = function() {
                                     item.user.last_name
                                 ) +
                                 " (" +
-                                _vm._s(item.user.id) +
+                                _vm._s(item.user.username) +
                                 ")\n\t\t\t\t\t"
                             )
                           ]
@@ -10296,27 +10290,6 @@ var render = function() {
                 1
               )
             ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-btn",
-            {
-              attrs: {
-                bottom: "",
-                color: "accent",
-                dark: "",
-                fab: "",
-                fixed: "",
-                right: ""
-              },
-              on: {
-                click: function($event) {
-                  _vm.dialog = !_vm.dialog
-                }
-              }
-            },
-            [_c("v-icon", [_vm._v("mdi-plus")])],
             1
           )
         ],
@@ -10614,6 +10587,17 @@ var render = function() {
           _c(
             "v-btn",
             {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value:
+                    _vm.$store.state.authUser.type == 1 ||
+                    _vm.$store.state.authUser.type == 2,
+                  expression:
+                    "$store.state.authUser.type==1 || $store.state.authUser.type==2"
+                }
+              ],
               attrs: {
                 bottom: "",
                 color: "accent",
@@ -11071,7 +11055,7 @@ var render = function() {
                       items: _vm.dataCustomer,
                       loading: _vm.loading,
                       "search-input": _vm.searchCustomer,
-                      "item-text": "id",
+                      "item-text": "username",
                       "item-value": "id",
                       label: "Customer ID",
                       "return-object": ""
@@ -11104,7 +11088,7 @@ var render = function() {
                                   _vm._v(
                                     _vm._s(item.first_name) +
                                       "-" +
-                                      _vm._s(item.id)
+                                      _vm._s(item.username)
                                   )
                                 ])
                               ]
@@ -11121,15 +11105,13 @@ var render = function() {
                               "v-list-item-content",
                               [
                                 _c("v-list-item-title", [
-                                  _vm._v(
-                                    _vm._s(item.first_name) +
-                                      "-" +
-                                      _vm._s(item.id)
-                                  )
+                                  _vm._v(_vm._s(item.username))
                                 ]),
                                 _vm._v(" "),
                                 _c("v-list-item-subtitle", {
-                                  domProps: { textContent: _vm._s(item.phone) }
+                                  domProps: {
+                                    textContent: _vm._s(item.first_name)
+                                  }
                                 })
                               ],
                               1
@@ -11423,27 +11405,6 @@ var render = function() {
               )
             ],
             1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-btn",
-            {
-              attrs: {
-                bottom: "",
-                color: "accent",
-                dark: "",
-                fab: "",
-                fixed: "",
-                right: ""
-              },
-              on: {
-                click: function($event) {
-                  _vm.dialog = !_vm.dialog
-                }
-              }
-            },
-            [_c("v-icon", [_vm._v("mdi-plus")])],
-            1
           )
         ],
         1
@@ -11619,21 +11580,21 @@ var render = function() {
                                         [
                                           _c("v-text-field", {
                                             attrs: {
-                                              label: "ID",
+                                              label: "Username",
                                               required: "",
                                               disabled: "",
                                               filled: ""
                                             },
                                             model: {
-                                              value: _vm.dataList.id,
+                                              value: _vm.dataList.username,
                                               callback: function($$v) {
                                                 _vm.$set(
                                                   _vm.dataList,
-                                                  "id",
+                                                  "username",
                                                   $$v
                                                 )
                                               },
-                                              expression: "dataList.id"
+                                              expression: "dataList.username"
                                             }
                                           })
                                         ],
@@ -11682,15 +11643,43 @@ var render = function() {
                                               filled: ""
                                             },
                                             model: {
-                                              value: _vm.dataList.name,
+                                              value: _vm.dataList.first_name,
                                               callback: function($$v) {
                                                 _vm.$set(
                                                   _vm.dataList,
-                                                  "name",
+                                                  "first_name",
                                                   $$v
                                                 )
                                               },
-                                              expression: "dataList.name"
+                                              expression: "dataList.first_name"
+                                            }
+                                          })
+                                        ],
+                                        1
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "v-col",
+                                        {
+                                          attrs: { sm: "12", md: "12", lg: "6" }
+                                        },
+                                        [
+                                          _c("v-text-field", {
+                                            attrs: {
+                                              label: "Name",
+                                              required: "",
+                                              filled: ""
+                                            },
+                                            model: {
+                                              value: _vm.dataList.last_name,
+                                              callback: function($$v) {
+                                                _vm.$set(
+                                                  _vm.dataList,
+                                                  "last_name",
+                                                  $$v
+                                                )
+                                              },
+                                              expression: "dataList.last_name"
                                             }
                                           })
                                         ],
@@ -11710,43 +11699,15 @@ var render = function() {
                                               filled: ""
                                             },
                                             model: {
-                                              value: _vm.dataList.contact,
+                                              value: _vm.dataList.phone,
                                               callback: function($$v) {
                                                 _vm.$set(
                                                   _vm.dataList,
-                                                  "contact",
+                                                  "phone",
                                                   $$v
                                                 )
                                               },
-                                              expression: "dataList.contact"
-                                            }
-                                          })
-                                        ],
-                                        1
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "v-col",
-                                        {
-                                          attrs: { sm: "12", md: "12", lg: "6" }
-                                        },
-                                        [
-                                          _c("v-text-field", {
-                                            attrs: {
-                                              label: "Address",
-                                              required: "",
-                                              filled: ""
-                                            },
-                                            model: {
-                                              value: _vm.dataList.address,
-                                              callback: function($$v) {
-                                                _vm.$set(
-                                                  _vm.dataList,
-                                                  "address",
-                                                  $$v
-                                                )
-                                              },
-                                              expression: "dataList.address"
+                                              expression: "dataList.phone"
                                             }
                                           })
                                         ],
@@ -11812,91 +11773,6 @@ var render = function() {
                             ],
                             1
                           )
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "v-col",
-                { attrs: { sm: "12", md: "4", lg: "4" } },
-                [
-                  _c(
-                    "v-card",
-                    { staticClass: "mx-auto", attrs: { "max-width": "344" } },
-                    [
-                      _c("v-img", {
-                        attrs: { src: _vm.dataList.image, height: "194" }
-                      }),
-                      _vm._v(" "),
-                      _c("v-card-title", [
-                        _vm._v(
-                          "\n                " +
-                            _vm._s(_vm.dataList.name) +
-                            "\n              "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("v-card-text"),
-                      _vm._v(" "),
-                      _c(
-                        "v-card-actions",
-                        [
-                          _c(
-                            "v-btn",
-                            {
-                              attrs: { dark: "", color: "primary" },
-                              on: {
-                                click: function($event) {
-                                  return _vm.changePassword()
-                                }
-                              }
-                            },
-                            [_vm._v("Password")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-btn",
-                            {
-                              attrs: {
-                                loading: _vm.loading,
-                                disabled: _vm.loading,
-                                dark: "",
-                                color: "blue-grey"
-                              },
-                              on: {
-                                click: function($event) {
-                                  return _vm.$refs.inputUpload.click()
-                                }
-                              }
-                            },
-                            [
-                              _vm._v("\n                    Image"),
-                              _c("v-icon", { attrs: { right: "" } }, [
-                                _vm._v("add_a_photo")
-                              ])
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "show",
-                                rawName: "v-show",
-                                value: false,
-                                expression: "false"
-                              }
-                            ],
-                            ref: "inputUpload",
-                            attrs: { accept: "image/*", type: "file" },
-                            on: { change: _vm.profileChange }
-                          })
                         ],
                         1
                       )
@@ -76944,7 +76820,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
     name: 'book',
     component: _components_dashboard_pizza_Home_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
     meta: {
-      icon: 'local_pizza',
+      icon: 'bookmark',
       title: "Book",
       type: allUser,
       status: true

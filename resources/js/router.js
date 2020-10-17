@@ -29,7 +29,7 @@ export default new Router({
             name: 'book',
             component: bookHome,
             meta: {
-                icon: 'local_pizza',
+                icon: 'bookmark',
                 title: "Book",
                 type: allUser,
                 status: true,

@@ -23,7 +23,7 @@
 							<v-btn x-small color="warning"  @click="assignItem(item)">return</v-btn>
 						</template>
 						<template v-slot:item.reader="{ item }">
-							{{item.user.first_name+' '+item.user.last_name}} ({{item.user.id}})
+							{{item.user.first_name+' '+item.user.last_name}} ({{item.user.username}})
 						</template>
 						<template v-slot:item.id="{ item }">
 							{{item.book.id}}
@@ -49,9 +49,6 @@
 					</v-data-table>
 				</v-col>
 			</v-row>
-			<v-btn bottom color="accent" dark fab fixed right @click="dialog = !dialog">
-				<v-icon>mdi-plus</v-icon>
-			</v-btn>
 		</v-container>
 		<v-snackbar
 			v-model="snackbar"
